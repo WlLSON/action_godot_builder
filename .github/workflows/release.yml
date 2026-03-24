@@ -231,7 +231,7 @@ jobs:
           # zip -q -9 -r ../release/Godot_v${VERSION}_win64_mono.exe.zip Godot_v${VERSION}_win64_mono.exe
           zip -q -9 -r ../release/Godot_v${VERSION}_windows_arm64.exe.zip Godot_v${VERSION}_windows_arm64.exe
           # zip -q -9 -r ../release/Godot_v${VERSION}_windows_arm64_mono.exe.zip Godot_v${VERSION}_windows_arm64_mono.exe
-          zip -q -9 -r ../release/Godot_v${VERSION}_macos.universal.zip Godot.app
+          # zip -q -9 -r ../release/Godot_v${VERSION}_macos.universal.zip Godot.app
           # zip -q -9 -r ../release/Godot_v${VERSION}_macos.universal.mono.zip Godot_mono.app
           cd ..
 
@@ -251,7 +251,7 @@ jobs:
           cp bin/godot.windows.template_debug.arm64.console.exe "release/templates/windows_debug_arm64_console.exe"
           cp bin/godot.windows.template_release.arm64.console.exe "release/templates/windows_release_arm64_console.exe"
 
-          cp bin/macos.zip "release/templates/macos.zip"
+          # cp bin/macos.zip "release/templatesmacos.zip"
           cp bin/godot_ios.zip "release/templates/ios.zip"
           cp -f bin/android_source.zip "release/templates/android_source.zip"
           cp -f bin/android_release.apk "release/templates/android_release.apk"
@@ -322,7 +322,7 @@ jobs:
             release/Godot_v${{ inputs.tag_release }}_win64.exe.zip
             # release/Godot_v${{ inputs.tag_release }}_win64_mono.exe.zip
             release/Godot_v${{ inputs.tag_release }}_windows_arm64.exe.zip
-            release/Godot_v${{ inputs.tag_release }}_macos.universal.zip
+            # release/Godot_v${{ inputs.tag_release }}_macos.universal.zip
             # release/Godot_v${{ inputs.tag_release }}_macos.universal.mono.zip
             release/Godot_v${{ inputs.tag_release }}_export_templates.tpz
             # release/Godot_v${{ inputs.tag_release }}_mono_export_templates.tpz
