@@ -27,7 +27,7 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # Used for the cache key. Add version suffix to force clean build.
   GODOT_BASE_BRANCH: ${{ inputs.base-branch }}
-  SCONSFLAGS: verbose=yes warnings=extra d3d12=yes strict_checks=no "angle_libs=${{ github.workspace }}/" "mesa_libs=${{ github.workspace }}/" debug_symbols=no ${{ inputs.module_flags }} use_static_cpp=yes
+  SCONSFLAGS: verbose=yes warnings=extra d3d12=no strict_checks=no "angle_libs=${{ github.workspace }}/" "mesa_libs=${{ github.workspace }}/" debug_symbols=no ${{ inputs.module_flags }} use_static_cpp=yes
   SCONS_CACHE_MSVC_CONFIG: true
 
 jobs:
