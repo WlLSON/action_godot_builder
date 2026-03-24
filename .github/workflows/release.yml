@@ -23,6 +23,9 @@ on:
       template_module_flags:
         description: 'Extra module flags for template build, e.g. module_webm_enabled=no'
         type: string
+        
+permissions:
+  contents: write
 
 # Global Settings
 env:
