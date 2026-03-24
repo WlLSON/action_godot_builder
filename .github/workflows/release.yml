@@ -214,22 +214,22 @@ jobs:
           VERSION_CLEAN=${VERSION//-/.}
 
           # Rename editors for packaging
-          mv bin/godot.linuxbsd.editor.x86_64 bin/Godot_v${VERSION}_linux.x86_64
+          # mv bin/godot.linuxbsd.editor.x86_64 bin/Godot_v${VERSION}_linux.x86_64
           # mv bin/godot.linuxbsd.editor.x86_64.mono bin/Godot_v${VERSION}_linux_mono.x86_64
           mv bin/godot.windows.editor.x86_64.exe bin/Godot_v${VERSION}_win64.exe
           # mv bin/godot.windows.editor.x86_64.mono.exe bin/Godot_v${VERSION}_win64_mono.exe
-          mv bin/godot.windows.editor.arm64.exe bin/Godot_v${VERSION}_windows_arm64.exe
+          # mv bin/godot.windows.editor.arm64.exe bin/Godot_v${VERSION}_windows_arm64.exe
           # mv bin/godot.windows.editor.arm64.mono.exe bin/Godot_v${VERSION}_windows_arm64_mono.exe
 
           echo "Editors renamed to:"
           ls bin
 
           cd bin
-          zip -q -9 -r ../release/Godot_v${VERSION}_linux.x86_64.zip Godot_v${VERSION}_linux.x86_64
+          # zip -q -9 -r ../release/Godot_v${VERSION}_linux.x86_64.zip Godot_v${VERSION}_linux.x86_64
           # zip -q -9 -r ../release/Godot_v${VERSION}_linux_mono.x86_64.zip Godot_v${VERSION}_linux_mono.x86_64
           zip -q -9 -r ../release/Godot_v${VERSION}_win64.exe.zip Godot_v${VERSION}_win64.exe
           # zip -q -9 -r ../release/Godot_v${VERSION}_win64_mono.exe.zip Godot_v${VERSION}_win64_mono.exe
-          zip -q -9 -r ../release/Godot_v${VERSION}_windows_arm64.exe.zip Godot_v${VERSION}_windows_arm64.exe
+          # zip -q -9 -r ../release/Godot_v${VERSION}_windows_arm64.exe.zip Godot_v${VERSION}_windows_arm64.exe
           # zip -q -9 -r ../release/Godot_v${VERSION}_windows_arm64_mono.exe.zip Godot_v${VERSION}_windows_arm64_mono.exe
           # zip -q -9 -r ../release/Godot_v${VERSION}_macos.universal.zip Godot.app
           # zip -q -9 -r ../release/Godot_v${VERSION}_macos.universal.mono.zip Godot_mono.app
@@ -317,11 +317,11 @@ jobs:
             - Template Module Flags: ${{ inputs.template_module_flags }}
             - Build Branch: ${{ inputs.base-branch }}
           files: |
-            release/Godot_v${{ inputs.tag_release }}_linux.x86_64.zip
+            # release/Godot_v${{ inputs.tag_release }}_linux.x86_64.zip
             # release/Godot_v${{ inputs.tag_release }}_linux_mono.x86_64.zip
             release/Godot_v${{ inputs.tag_release }}_win64.exe.zip
             # release/Godot_v${{ inputs.tag_release }}_win64_mono.exe.zip
-            release/Godot_v${{ inputs.tag_release }}_windows_arm64.exe.zip
+            # release/Godot_v${{ inputs.tag_release }}_windows_arm64.exe.zip
             # release/Godot_v${{ inputs.tag_release }}_macos.universal.zip
             # release/Godot_v${{ inputs.tag_release }}_macos.universal.mono.zip
             release/Godot_v${{ inputs.tag_release }}_export_templates.tpz
