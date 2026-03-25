@@ -27,7 +27,8 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # Used for the cache key. Add version suffix to force clean build.
   GODOT_BASE_BRANCH: ${{ inputs.base-branch }}
-  SCONSFLAGS: LINKFLAGS='"-sINITIAL_MEMORY=33554432 -sMAXIMUM_MEMORY=268435456 -sALLOW_MEMORY_GROWTH=1"' verbose=yes warnings=extra werror=no debug_symbols=no optimize=size use_closure_compiler=yes strict_checks=yes ${{ inputs.module_flags }} use_static_cpp=yes
+  EMCC_CFLAGS: "-sINITIAL_MEMORY=33554432 -sMAXIMUM_MEMORY=268435456 -sALLOW_MEMORY_GROWTH=1"
+  SCONSFLAGS: verbose=yes warnings=extra werror=no debug_symbols=no optimize=size use_closure_compiler=yes strict_checks=yes ${{ inputs.module_flags }} use_static_cpp=yes
   EM_VERSION: 4.0.11
 
 jobs:
