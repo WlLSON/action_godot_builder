@@ -306,8 +306,11 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ env.FINAL_TAG }}
-          name: "Gonuts ${{ inputs.tag_release }} - ${{ inputs.template_module_flags }}"
+          #tag_name: ${{ env.FINAL_TAG }}
+          # short tag name
+          tag_name: "v${{ inputs.tag_release }}-${{ github.run_number }}"
+          #name: "Gonuts ${{ inputs.tag_release }} - ${{ inputs.template_module_flags }}"
+          name: "GodotMM ${{ inputs.tag_release }} - ${{ inputs.template_module_flags }}"
           repository: ${{ github.repository }}
           token: ${{ env.GH_TOKEN }}
           body: |
@@ -319,10 +322,12 @@ jobs:
             #- [Terminal](https://github.com/markeel/gdterm): Run terminal commands from the Editor.
             #- [VSCode](https://github.com/appsinacup/godot_vscode_ide): Integrate with VSCode inside the editor.
 
-            # Info:
-
-            - Repo: [${{ inputs.repo }}](https://github.com/${{ inputs.repo }})
+            # Build Information
             - Base Version: ${{ inputs.tag_release }}
+            - Build Number: ${{ github.run_number }}
+
+            # Info:
+            - Repo: [${{ inputs.repo }}](https://github.com/${{ inputs.repo }})
             - Optimization: ${{ inputs.lto }}
             - Template Module Flags: ${{ inputs.template_module_flags }}
             - Build Branch: ${{ inputs.base-branch }}
