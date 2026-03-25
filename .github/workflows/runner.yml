@@ -25,7 +25,7 @@ on:
       template_module_flags:
         description: 'Extra module flags for template build, e.g. disable_3d=yes'
         type: string
-        default: ''
+        default: 'disable_3d=yes deprecated=no module_bullet_enabled=no module_mobile_vr_enabled=no module_openxr_enabled=no module_webxr_enabled=no module_vhacd_enabled=no module_upnp_enabled=no module_raycast_enabled=no module_theora_enabled=no module_navigation_enabled=no'
       lto:
         description: 'LTO mode. Options: "none", "thin", "full"'
         type: choice
