@@ -296,10 +296,17 @@ jobs:
       - name: List release directory
         run: ls -R release
 
+      - name: Create Clean Tag
+        run: |
+          # Take the long input string and replace spaces with underscores
+          RAW_TAG="${{ inputs.tag }}-${{ inputs.tag_release }}_${{ inputs.template_module_flags }}"
+          CLEAN_TAG=$(echo "$RAW_TAG" | tr ' ' '_')
+          echo "FINAL_TAG=$CLEAN_TAG" >> $GITHUB_ENV
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ inputs.tag }}-${{ inputs.tag_release }}_${{ inputs.template_module_flags }}
+          tag_name: ${{ env.FINAL_TAG }}
           name: "Gonuts ${{ inputs.tag_release }} - ${{ inputs.template_module_flags }}"
           repository: ${{ github.repository }}
           token: ${{ env.GH_TOKEN }}
