@@ -97,6 +97,11 @@ jobs:
       - name: Setup Python and SCons
         uses: ./.github/actions/godot-deps
 
+      - name: Debug Environment
+        run: |
+          echo "Global EMCC_CFLAGS: $EMCC_CFLAGS"
+          echo "Global SCONSFLAGS: $SCONSFLAGS"
+
       - name: Compilation
         uses: ./.github/actions/godot-build
         with:
