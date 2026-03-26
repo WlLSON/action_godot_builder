@@ -121,6 +121,15 @@ jobs:
           platform: web
           target: ${{ matrix.target }}
 
+      - name: Verify memory settings in output
+        shell: sh
+        run: |
+          echo "Checking compiled output for memory settings..."
+          grep -o "INITIAL_MEMORY=[0-9]*" bin/*.js || echo "INITIAL_MEMORY not found as text"
+          grep -o "MAXIMUM_MEMORY=[0-9]*" bin/*.js || echo "MAXIMUM_MEMORY not found as text"
+          echo "--- Binary size ---"
+          ls -lh bin/
+
       - name: Save Godot build cache
         uses: ./.github/actions/godot-cache-save
         with:
