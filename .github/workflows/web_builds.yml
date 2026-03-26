@@ -98,6 +98,15 @@ jobs:
       - name: Setup Python and SCons
         uses: ./.github/actions/godot-deps
 
+      - name: Patch web initial memory
+        shell: sh
+        run: |
+          sed -i 's/-sINITIAL_MEMORY=[0-9]*/-sINITIAL_MEMORY=33554432/g' platform/web/detect.py
+          sed -i 's/-sMAXIMUM_MEMORY=[0-9]*/-sMAXIMUM_MEMORY=268435456/g' platform/web/detect.py
+          echo "Memory settings after patch:"
+          grep "INITIAL_MEMORY\|MAXIMUM_MEMORY\|ALLOW_MEMORY_GROWTH" platform/web/detect.py
+
+
       - name: Debug Environment
         run: |
           echo "Global EMCC_CFLAGS: $EMCC_CFLAGS"
