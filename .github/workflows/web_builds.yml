@@ -29,7 +29,7 @@ env:
   GODOT_BASE_BRANCH: ${{ inputs.base-branch }}
   EMCC_CFLAGS: "-sINITIAL_MEMORY=33554432 -sMAXIMUM_MEMORY=268435456 -sALLOW_MEMORY_GROWTH=1"
   EMCC_LDFLAGS: "-sINITIAL_MEMORY=33554432 -sMAXIMUM_MEMORY=268435456 -sALLOW_MEMORY_GROWTH=1"
-  SCONSFLAGS: verbose=yes warnings=extra werror=no debug_symbols=no optimize=size use_closure_compiler=yes strict_checks=yes ${{ inputs.module_flags }} use_static_cpp=yes
+  SCONSFLAGS: initial_memory=32 maximum_memory=256 WASM_MEM_MAX=256MB verbose=yes warnings=extra werror=no debug_symbols=no optimize=size use_closure_compiler=yes strict_checks=yes ${{ inputs.module_flags }} use_static_cpp=yes
   EM_VERSION: 4.0.11
 
 jobs:
@@ -101,11 +101,10 @@ jobs:
       - name: Patch web initial memory
         shell: sh
         run: |
-          sed -i 's/-sINITIAL_MEMORY=[0-9]*/-sINITIAL_MEMORY=33554432/g' platform/web/detect.py
-          sed -i 's/-sMAXIMUM_MEMORY=[0-9]*/-sMAXIMUM_MEMORY=268435456/g' platform/web/detect.py
+          sed -i 's/"-sINITIAL_MEMORY=%sMB" % env\["initial_memory"\]/"-sINITIAL_MEMORY=33554432"/g' platform/web/detect.py
+          sed -i 's/env.Append(LINKFLAGS=\["-sINITIAL_MEMORY=33554432"\])/env.Append(LINKFLAGS=["-sINITIAL_MEMORY=33554432"])\n    env.Append(LINKFLAGS=["-sMAXIMUM_MEMORY=268435456"])/g' platform/web/detect.py
           echo "Memory settings after patch:"
           grep "INITIAL_MEMORY\|MAXIMUM_MEMORY\|ALLOW_MEMORY_GROWTH" platform/web/detect.py
-
 
       - name: Debug Environment
         run: |
