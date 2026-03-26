@@ -26,7 +26,8 @@ runs:
       run: |
         echo "Building with SCons flags:" platform=${{ inputs.platform }} target=${{ inputs.target }} ${{ inputs.scons-flags }} "cache_path=${{ inputs.scons-cache }}" redirect_build_objects=no
         echo "Building with Emscripten Flags: $EMCC_CFLAGS" 
-
+        echo "Building with Emscripten Flags: $EMCC_LDFLAGS" 
+        
 
         #if [ "${{ inputs.target }}" != "editor" ]; then
           # Ensure we don't include editor code in export template builds.
