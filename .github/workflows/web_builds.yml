@@ -101,6 +101,7 @@ jobs:
       - name: Debug Environment
         run: |
           echo "Global EMCC_CFLAGS: $EMCC_CFLAGS"
+          echo "Global EMCC_LDFLAGS:: $EMCC_LDFLAGS:"
           echo "Global SCONSFLAGS: $SCONSFLAGS"
 
       - name: Compilation
