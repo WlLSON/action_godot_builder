@@ -311,15 +311,15 @@ jobs:
             
             - Base Version: ${{ inputs.tag_release }}
             - Build Number: ${{ github.run_number }}
-            - EMCC_LDFLAGS: ${{ env.EMCC_LDFLAGS }}
-            - EMCC_CFLAGS: ${{ env.EMCC_CFLAGS }}
-            - EMCC_SCONSFLAGS: ${{ env.SCONSFLAGS }}
-            - EM_VERSION: ${{ env.EM_VERSION }}
+            - SCONSFLAGS: ${{ env.SCONSFLAGS }}
             - inputs.tag_release: v${{ inputs.tag_release }}
             - Repo: [${{ inputs.repo }}](https://github.com/${{ inputs.repo }})
             - Optimization: ${{ inputs.lto }}
             - Template Module Flags: ${{ inputs.template_module_flags }}
             - Build Branch: ${{ inputs.base-branch }}
+            - Emscripten Version: 4.0.11
+            - Initial Memory: 32MB (web build)
+            - Maximum Memory: 256MB (web build)
           files: |
             release/Godot_v${{ inputs.tag_release }}_win64.exe.zip
             release/Godot_v${{ inputs.tag_release }}_export_templates.tpz
