@@ -318,10 +318,10 @@ jobs:
             
             - Base Version: ${{ inputs.tag_release }}
             - Build Number: ${{ github.run_number }}
-            - EMCC_LDFLAGS: ${{ env.EMCC_LDFLAGS }}
-            - EMCC_CFLAGS: ${{ env.EMCC_CFLAGS }}
+            - EMCC_LDFLAGS: $EMCC_LDFLAGS
+            - EMCC_CFLAGS: $EMCC_EMCC_CFLAGS
             - EMCC_SCONSFLAGS: ${{ env.SCONSFLAGS }}
-            - EM_VERSION: ${{ env.EM_VERSION }}
+            - EM_VERSION: $EM_VERSION
             - inputs.tag_release: v${{ inputs.tag_release }}
             - Repo: [${{ inputs.repo }}](https://github.com/${{ inputs.repo }})
             - Optimization: ${{ inputs.lto }}
