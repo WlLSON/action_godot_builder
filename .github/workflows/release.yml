@@ -310,23 +310,19 @@ jobs:
           # short tag name
           tag_name: "v${{ inputs.tag_release }}-${{ github.run_number }}"
           #name: "Gonuts ${{ inputs.tag_release }} - ${{ inputs.template_module_flags }}"
-          name: "GodotMM ${{ inputs.tag_release }} - ${{ inputs.template_module_flags }}"
+          name: "GodotMM ${{ inputs.tag_release }} - ${{ github.run_number }}"
           repository: ${{ github.repository }}
           token: ${{ env.GH_TOKEN }}
           body: |
-            # Modules added:
-
-            # - [tiny_lobby](https://appsinacup.com/tiny-lobby/): Integrate with multiplayer C++ server with Lobby Management and Lua scripting.
-            #- [Steam](https://godotsteam.com): Integrate your game with Steam.
-            # - [DiscordEmbeddedApp](https://discord.com/developers/docs/developer-tools/embedded-app-sdk): Integrate with Discord for your web game.
-            #- [Terminal](https://github.com/markeel/gdterm): Run terminal commands from the Editor.
-            #- [VSCode](https://github.com/appsinacup/godot_vscode_ide): Integrate with VSCode inside the editor.
-
             # Build Information
+            
             - Base Version: ${{ inputs.tag_release }}
             - Build Number: ${{ github.run_number }}
-
-            # Info:
+            - EMCC_LDFLAGS: ${{ env.EMCC_LDFLAGS }}
+            - EMCC_CFLAGS: ${{ env.EMCC_CFLAGS }}
+            - EMCC_SCONSFLAGS: ${{ env.SCONSFLAGS }}
+            - EM_VERSION: ${{ env.EM_VERSION }}
+            - inputs.tag_release: v${{ inputs.tag_release }}
             - Repo: [${{ inputs.repo }}](https://github.com/${{ inputs.repo }})
             - Optimization: ${{ inputs.lto }}
             - Template Module Flags: ${{ inputs.template_module_flags }}
